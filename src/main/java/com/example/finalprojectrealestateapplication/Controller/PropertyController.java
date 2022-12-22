@@ -4,6 +4,7 @@ import com.example.finalprojectrealestateapplication.Entity.Property;
 import com.example.finalprojectrealestateapplication.Request.PropertyRequest;
 import com.example.finalprojectrealestateapplication.Response.PropertyResponse;
 import com.example.finalprojectrealestateapplication.Service.PropertyService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ return propertyResponse;
 
 
     @PostMapping()
-    public void addProperty(@RequestBody PropertyRequest propertyRequest){
+    public void addProperty( @Valid @RequestBody PropertyRequest propertyRequest){
 
     }
 }

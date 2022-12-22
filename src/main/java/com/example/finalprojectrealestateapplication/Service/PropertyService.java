@@ -15,7 +15,7 @@ public class PropertyService {
     PropertyRepository propertyRepository;
 
     public static List<Property> getAllProperties(){
-        return (List<Property>) propertyRepository.findAll();
+        return (List<Property>)  propertyRepository.findAll();
     }
 
 }
