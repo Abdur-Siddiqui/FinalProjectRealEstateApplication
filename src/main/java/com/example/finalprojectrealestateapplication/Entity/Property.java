@@ -14,22 +14,22 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Property {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long listingId;
-    @Column(name = "num_Beds")
+    private long Id;
+    @Column(name = "num_Beds", nullable = false)
     private int numOfBeds;
-    @Column( name ="num_Baths")
+    @Column( name ="num_Baths", nullable = false)
     private int numOfBaths;
-    @Column(name ="sqrt_Foot")
+    @Column(name ="sqrt_Foot", nullable = false)
     private double sqrtFoot;
 
-    @Column(name ="price")
+    @Column(name ="price",nullable = false)
     private double price;
 
-    @Column(name ="property_Type")
+    @Column(name ="property_Type",nullable = false)
     private String propertyType;
-    @Column(name ="image")
+    @Column(name ="image",nullable = false)
     private byte image;
-    @Column(name ="city")
+    @Column(name ="city",nullable = false)
     private String city;
     public  Property(PropertyRequest propertyRequest){
         numOfBeds=propertyRequest.getNumOfBeds();

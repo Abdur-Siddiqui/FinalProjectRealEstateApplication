@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PropertyResponse {
-    private long listingId;
+    private long Id;
     private int numOfBeds;
     private int numOfBaths;
 
@@ -31,7 +31,7 @@ public class PropertyResponse {
 
 
     public PropertyResponse(Property property){
-        listingId=property.getListingId();
+        Id=property.getId();
         numOfBeds=property.getNumOfBeds();
         numOfBaths=property.getNumOfBaths();
        sqrtFoot=property.getSqrtFoot();

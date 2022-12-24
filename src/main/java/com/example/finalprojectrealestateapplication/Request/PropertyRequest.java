@@ -1,6 +1,7 @@
 package com.example.finalprojectrealestateapplication.Request;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,13 +14,13 @@ public class PropertyRequest {
     private int numOfBaths;
     @NotBlank
     private double sqrtFoot;
-    @NotBlank
+    @NotNull
     private double price;
 
-    @NotBlank
+    @NotNull
     private String propertyType;
 
-    @NotBlank
+    @NotNull
     private byte image;
 
     @NotBlank
