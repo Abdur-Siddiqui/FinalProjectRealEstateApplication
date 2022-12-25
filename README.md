@@ -3,6 +3,7 @@ I am creating the backend for my real Estate Application, the purpose of this ap
 view a booking id. 
 
 Unfortuanlty I ran into some errors, such as my database was not working, it wasnt showing, the post, get, delete requests were not working.
+I tried using post man, to create a post request, but I kept getting an error, and cold nto figure it out.
 
 
 
