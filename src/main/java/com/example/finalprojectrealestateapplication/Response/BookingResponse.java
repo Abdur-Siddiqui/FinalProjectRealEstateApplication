@@ -1,16 +1,18 @@
 package com.example.finalprojectrealestateapplication.Response;
 
 import com.example.finalprojectrealestateapplication.Entity.Booking;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class BookingResponse {
 
-    private long Id;
+    private long id;
 
     private String firstName;
 
@@ -24,7 +26,7 @@ public class BookingResponse {
     private String message;
 
     public BookingResponse(Booking booking){
-        Id= booking.getBookingId();
+        id= booking.getId();
         firstName= booking.getFirstName();
         lastName= booking.getLastName();
         email= booking.getEmail();

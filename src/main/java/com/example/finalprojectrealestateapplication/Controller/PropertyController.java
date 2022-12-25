@@ -1,5 +1,6 @@
 package com.example.finalprojectrealestateapplication.Controller;
 
+import com.example.finalprojectrealestateapplication.Entity.Booking;
 import com.example.finalprojectrealestateapplication.Entity.Property;
 import com.example.finalprojectrealestateapplication.Request.BookingRequest;
 import com.example.finalprojectrealestateapplication.Request.PropertyRequest;
@@ -15,31 +16,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/properties")
+@CrossOrigin("*")
+@RequestMapping("/api/Properties")
 public class PropertyController {
     @Autowired
     PropertyService propertyService;
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/{listingId}/Bookings")
-    public  BookingResponse addCourse(
-            @PathVariable long listingId,
+    @PostMapping("/{listing_Id}/Bookings")
+    public  BookingResponse addBooking(
+            @PathVariable long listing_Id,
             @Valid @RequestBody BookingRequest bookingRequest
     ){
-        return new BookingResponse(propertyService.addBooking(listingId, bookingRequest));
+        return new BookingResponse(propertyService.addBooking(listing_Id, bookingRequest));
     }
 
-    @GetMapping()
-    public List<PropertyResponse> getAllProperties(@PathVariable long Id){
-        List<Property> properties= propertyService.getAllProperties(Id);
+    // get all bookings
+
+    @GetMapping("/{listingId}/Bookings")
+    public List<BookingResponse> getAllBookings(@PathVariable long listingId){
+        List<Booking> bookings = propertyService.getAllBookings(listingId);
+        List<BookingResponse> bookingResponses = new ArrayList<>();
+        for(int i =0; i<bookings.size(); i++){
+            bookingResponses.add(new BookingResponse(bookings.get(i)));
+        }
+        return bookingResponses;
+    }
+
+
+    @GetMapping("/city/{city}")
+    public List<PropertyResponse> getAllPropertiesByCity( @PathVariable String city){
+        List<Property> properties= propertyService.getAllPropertiesByCity(city);
         List<PropertyResponse> propertyResponse = new ArrayList<>();
         properties.forEach(property -> {
             propertyResponse.add(new PropertyResponse(property));
         });
 return propertyResponse;
 
+    }
 
+
+    @GetMapping("/price/{price}")
+    public List<PropertyResponse> getAllPropertiesByPrice( @PathVariable String price){
+        List<Property> properties= propertyService.getAllPropertiesByPrice(price);
+        List<PropertyResponse> propertyResponse = new ArrayList<>();
+        properties.forEach(property -> {
+            propertyResponse.add(new PropertyResponse(property));
+        });
+        return propertyResponse;
 
     }
+    // creating a property
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public PropertyResponse addProperty(
@@ -48,13 +74,18 @@ return propertyResponse;
         return new PropertyResponse(property);
 
     }
-
-
+// updating a property
+@PutMapping("/{id}")
+public PropertyResponse updateProperty(@PathVariable long id,
+                                       @Valid @RequestBody PropertyRequest propertyRequest){
+        Property updatedProperty = propertyService.updateProperty(id, propertyRequest);
+        return new PropertyResponse(updatedProperty);
+}
 // Deleting a property
-    @DeleteMapping("/{Id}")
-    public void deleteProperty(@PathVariable long Id)
+    @DeleteMapping("/{id}")
+    public void deleteProperty(@PathVariable long id)
     {
-        propertyService.deleteProperty(Id);
+        propertyService.deleteProperty(id);
     }
 
 

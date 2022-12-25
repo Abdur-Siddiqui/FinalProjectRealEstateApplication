@@ -3,6 +3,7 @@ package com.example.finalprojectrealestateapplication.Entity;
 
 import com.example.finalprojectrealestateapplication.Request.PropertyRequest;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,11 +11,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Table(name ="Properties")
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 public class Property {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private long id;
     @Column(name = "num_Beds", nullable = false)
     private int numOfBeds;
     @Column( name ="num_Baths", nullable = false)
@@ -33,12 +37,12 @@ public class Property {
     private String city;
     public  Property(PropertyRequest propertyRequest){
         numOfBeds=propertyRequest.getNumOfBeds();
-         numOfBaths= propertyRequest.getNumOfBaths();
-         sqrtFoot=propertyRequest.getSqrtFoot();
-         price=propertyRequest.getPrice();
-         propertyType=propertyRequest.getPropertyType();
-         image= propertyRequest.getImage();
-         city=propertyRequest.getCity();
+        numOfBaths= propertyRequest.getNumOfBaths();
+        sqrtFoot=propertyRequest.getSqrtFoot();
+        price=propertyRequest.getPrice();
+        propertyType=propertyRequest.getPropertyType();
+        image= propertyRequest.getImage();
+        city=propertyRequest.getCity();
 
     }
 

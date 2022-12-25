@@ -8,6 +8,9 @@ import java.util.List;
 
 @Repository
 public interface PropertyRepository extends CrudRepository<Property, Long> {
-    List<Property> findAllByCityAndPriceAndNumOfBeds(String city, double price, int NumOfBeds);
+    public List<Property> findAllByCityIgnoreCase(String city);
+
+    public List<Property> findAllByPrice(String price);
+
 
 }
